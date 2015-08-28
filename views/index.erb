@@ -1,0 +1,26 @@
+<h1 style="text-align: center; margin-bottom: 50px;">Question<i class="fa fa-tasks"></i></h1>
+
+
+<p>Band List:</p>
+
+
+<p><i>Add Bands:</i></p>
+
+<form action="/bands" method="post">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit" class="btn btn-success">Add Recipe</button>
+</form>
+
+<ul>
+<% if @bands.any?() %>
+  <% @bands.each() do |band| %>
+  <li><a href="/bands/<%= band.id %>"><%= band.name() %></a></li>
+  <% end %>
+<% end %>
+</ul>
+
+<!-- for testing -->
+<br>
+<a href="/tags_link">TAGS </a>
