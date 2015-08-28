@@ -1,0 +1,65 @@
+<p>You are viewing <%= @selected_band.name %></p>
+
+  <% end %>
+<div id= "venues_group">
+  <p><i>Add Venues:</i></p>
+
+  <form action="/add_venue" method="post">
+    <input type="hidden" name="id" value="<%= @selected_band.id()%>">
+    <!--
+    holds the value value in the page but doesnot show it on the page
+  -->
+    <label for="venue">Venue Name:</label>
+    <input id="venue" name="venue" type="text">
+
+    <button type="submit" class="btn btn-success">Add Band</button>
+  </form>
+
+  <ul>
+    <% if @selected_band.venues.any?() %>
+      <% @selected_band.venues.each() do |venues| %>
+       <li><%= venues.name() %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div id= "instructions_group">
+  <p> Instructions: </p>
+
+  <form action="/add_instruction" method="post">
+    <label for="instruction">Instruction:</label>
+    <input type="hidden" name="id" value="<%= @selected_band.id()%>">
+    <input id="instruction" name="instruction" type="text">
+
+    <button type="submit" class="btn btn-success">Add Instruction</button>
+  </form>
+
+  <ol>
+    <% if @selected_band.instructions.any?() %>
+      <% @selected_band.instructions.each() do |instruction| %>
+        <li><%= instruction.description() %></li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
+
+<div id= "tags_group">
+  <p> Tags: </p>
+
+  <% if @selected_band.tags.any? %>
+    <% @selected_band.tags.each() do |tag| %>
+      <li> <%= tag.name() %> </li>
+    <% end %>
+  <% else %>
+    <form action="/tag_associate" method = "post">
+      <input type="hidden" name="id" value="<%= @selected_band.id()%>"
+      <% @tags.each do |tag| %>
+        <input type="checkbox" name="tag_checkbox[]" value="<%= tag.id() %>"><%= tag.name %>
+      <% end %>
+      <button name="button">Associate</button>
+    </form>
+  <% end %>
+
+</div>
+ <a href="/">Home</a>

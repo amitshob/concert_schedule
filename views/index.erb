@@ -1,7 +1,9 @@
-<h1 style="text-align: center; margin-bottom: 50px;">Question<i class="fa fa-tasks"></i></h1>
 
 
-<p>Band List:</p>
+
+
+
+<h1 align= "center">Band List:</h1>
 
 
 <p><i>Add Bands:</i></p>
@@ -10,17 +12,17 @@
   <label for="name">Name:</label>
   <input id="name" name="name" type="text">
 
-  <button type="submit" class="btn btn-success">Add Recipe</button>
+  <button type="submit" class="btn btn-success">Add Band</button>
 </form>
 
 <ul>
 <% if @bands.any?() %>
   <% @bands.each() do |band| %>
-  <li><a href="/bands/<%= band.id %>"><%= band.name() %></a></li>
+  <li><a href="/bands<%= band.id %>"><%= band.name() %></a></li>
   <% end %>
 <% end %>
 </ul>
 
 <!-- for testing -->
 <br>
-<a href="/tags_link">TAGS </a>
+<a href="/venues_link">Venues </a>
